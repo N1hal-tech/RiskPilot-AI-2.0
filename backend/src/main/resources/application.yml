@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/riskpilot}
+      database: riskpilot
+
+rl-service:
+  url: ${RL_SERVICE_URL:http://localhost:8000}
+
+ml-service:
+  url: ${ML_SERVICE_URL:http://localhost:8000}
+
+gemini:
+  api-key: ${GEMINI_API_KEY:}
+  embedding-model: gemini-embedding-001
+  llm-model: gemini-2.5-flash
+
+logging:
+  level:
+    com.loanguard: INFO
+    org.springframework.data.mongodb: WARN

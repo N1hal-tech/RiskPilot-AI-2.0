@@ -1,0 +1,132 @@
+/* ================================================================
+   Role-Specific Styling — Borrower, Officer, Admin
+   ================================================================ */
+
+/* ── USER (Borrower) — Blue Theme ──────────────────────────── */
+.shell-user .navbar {
+  border-bottom: 2px solid #2563eb;
+  background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(37,99,235,0.05));
+}
+
+.shell-user .sidebar {
+  border-right: 2px solid #2563eb;
+  background: linear-gradient(180deg, #ffffff, #f0f4f8);
+}
+
+.shell-user .sidebar-link.active::before {
+  background: #2563eb;
+}
+
+.shell-user .dashboard-hero {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.shell-user .stat-card::after {
+  background: #2563eb;
+}
+
+/* ── LOAN_OFFICER — Green Theme ──────────────────────────── */
+.shell-officer .navbar {
+  border-bottom: 2px solid #059669;
+  background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(5,150,105,0.05));
+}
+
+.shell-officer .sidebar {
+  border-right: 2px solid #059669;
+  background: linear-gradient(180deg, #ffffff, #f0fdf4);
+}
+
+.shell-officer .sidebar-link.active::before {
+  background: #059669;
+}
+
+.shell-officer .dashboard-hero {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+.shell-officer .stat-card::after {
+  background: #059669;
+}
+
+.shell-officer .btn-primary {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+}
+
+.shell-officer .btn-primary:hover {
+  background: linear-gradient(135deg, #047857, #065f46);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
+}
+
+/* ── ADMIN — Dark Indigo Theme ───────────────────────────── */
+.shell-admin .navbar {
+  border-bottom: 2px solid #4f46e5;
+  background: linear-gradient(90deg, rgba(79,70,229,0.1), rgba(50,50,150,0.05));
+}
+
+.shell-admin .sidebar {
+  border-right: 2px solid #4f46e5;
+  background: linear-gradient(180deg, #0f0f23, #1a1a35);
+}
+
+.shell-admin .sidebar-link.active::before {
+  background: #818cf8;
+}
+
+.shell-admin .dashboard-hero {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+}
+
+.shell-admin .stat-card::after {
+  background: #4f46e5;
+}
+
+.shell-admin .btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+}
+
+.shell-admin .btn-primary:hover {
+  background: linear-gradient(135deg, #4338ca, #3f2f99);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+}
+
+.shell-admin .card {
+  border-left: 3px solid #4f46e5;
+}
+
+.shell-admin .page-header {
+  border-bottom: 1px solid rgba(79, 70, 229, 0.2);
+  padding-bottom: var(--space-6);
+}
+
+/* ── Dark mode role-specific adjustments ────────────────────── */
+[data-theme="dark"] .shell-admin .navbar {
+  background: linear-gradient(90deg, rgba(79,70,229,0.15), rgba(50,50,150,0.1));
+  border-bottom-color: #818cf8;
+}
+
+[data-theme="dark"] .shell-admin .sidebar {
+  background: linear-gradient(180deg, #0a0f1e, #0f1a35);
+  border-right-color: #818cf8;
+}
+
+[data-theme="dark"] .shell-officer .navbar {
+  background: linear-gradient(90deg, rgba(5,150,105,0.1), rgba(5,150,105,0.05));
+  border-bottom-color: #4ade80;
+}
+
+[data-theme="dark"] .shell-officer .sidebar {
+  background: linear-gradient(180deg, #0a1f15, #0f2e1f);
+  border-right-color: #4ade80;
+}
+
+[data-theme="dark"] .shell-user .navbar {
+  background: linear-gradient(90deg, rgba(37,99,235,0.1), rgba(37,99,235,0.05));
+  border-bottom-color: #60a5fa;
+}
+
+[data-theme="dark"] .shell-user .sidebar {
+  background: linear-gradient(180deg, #0a1220, #0f1f35);
+  border-right-color: #60a5fa;
+}

@@ -1,0 +1,263 @@
+/* ================================================================
+   Base Styles — Reset + Globals
+   ================================================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  overflow-x: hidden;
+}
+
+a { color: var(--text-link); text-decoration: none; font-weight: 600; transition: color var(--transition-fast); }
+a:hover { color: var(--clr-primary-800); }
+
+img { max-width: 100%; display: block; }
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background: var(--bg-input);
+}
+
+.form-input, select, textarea {
+  color: var(--text-primary);
+  background: var(--bg-input);
+}
+
+.form-input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: var(--text-muted);
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--clr-slate-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--clr-slate-400); }
+
+::selection { background: var(--clr-primary-200); color: var(--clr-primary-900); }
+
+/* ── Dark Mode Specific Overrides ────────────────────────────── */
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #f1f5f9;
+}
+
+/* ── Dark card hover ─────────────────────────────────────────── */
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Dark input ───────────────────────────────────────────────── */
+[data-theme="dark"] .form-input {
+  background: var(--bg-input);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-input::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .form-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ── Dark table ───────────────────────────────────────────────── */
+[data-theme="dark"] .data-table th {
+  background: var(--clr-slate-50);
+  border-color: var(--border-default);
+}
+
+[data-theme="dark"] .data-table td {
+  border-color: var(--border-default);
+}
+
+[data-theme="dark"] .data-table tr:hover td {
+  background: var(--bg-hover);
+}
+
+/* ── Dark buttons ─────────────────────────────────────────────── */
+[data-theme="dark"] .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--clr-slate-300);
+}
+
+[data-theme="dark"] .btn-ghost:hover {
+  background: var(--clr-slate-100);
+}
+
+/* ── Dark navbar ─────────────────────────────────────────────── */
+[data-theme="dark"] .navbar {
+  background: var(--bg-navbar);
+  border-color: var(--border-default);
+  backdrop-filter: blur(16px);
+}
+
+[data-theme="dark"] .navbar-user {
+  background: var(--clr-slate-50);
+  border-color: var(--border-default);
+}
+
+/* ── Dark sidebar ────────────────────────────────────────────── */
+[data-theme="dark"] .sidebar {
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-default);
+}
+
+/* ── Dark auth ───────────────────────────────────────────────── */
+[data-theme="dark"] .auth-right {
+  background: var(--auth-right-bg);
+}
+
+[data-theme="dark"] .auth-form-container .form-input {
+  background: var(--bg-input);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+/* ── Dark modal ───────────────────────────────────────────────── */
+[data-theme="dark"] .modal-card {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .modal-footer {
+  background: var(--clr-slate-50);
+}
+
+/* ── Dark alerts ───────────────────────────────────────────────── */
+[data-theme="dark"] .alert-error {
+  background: var(--clr-danger-50);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: var(--clr-danger-500);
+}
+
+[data-theme="dark"] .alert-success {
+  background: var(--clr-success-50);
+  border-color: rgba(34, 197, 94, 0.2);
+  color: var(--clr-success-500);
+}
+
+[data-theme="dark"] .alert-warning {
+  background: var(--clr-warning-50);
+  border-color: rgba(245, 158, 11, 0.2);
+  color: var(--clr-warning-500);
+}
+
+/* ── Dark stat cards ─────────────────────────────────────────── */
+[data-theme="dark"] .stat-card {
+  background: var(--bg-card);
+  border-color: var(--border-default);
+}
+
+[data-theme="dark"] .stat-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Dark progress bar ───────────────────────────────────────── */
+[data-theme="dark"] .progress-bar {
+  background: var(--clr-slate-100);
+}
+
+/* ── Dark dashboard hero ─────────────────────────────────────── */
+[data-theme="dark"] .dashboard-hero {
+  background: linear-gradient(135deg, #1e3a5f, #1e40af);
+}
+
+/* ── Dark apply sidebar ──────────────────────────────────────── */
+[data-theme="dark"] .apply-sidebar-card {
+  background: linear-gradient(160deg, #0a0f1e, #1e3a5f);
+  border: 1px solid var(--border-default);
+}
+
+/* ── Dark decision card ─────────────────────────────────────── */
+[data-theme="dark"] .decision-card.approved {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), var(--bg-card));
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+[data-theme="dark"] .decision-card.review {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), var(--bg-card));
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+[data-theme="dark"] .decision-card.rejected {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), var(--bg-card));
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ── Dark risk gauge ─────────────────────────────────────────── */
+[data-theme="dark"] .risk-gauge-circle.green {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+[data-theme="dark"] .risk-gauge-circle.yellow {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="dark"] .risk-gauge-circle.red {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* ── Dark empty state ────────────────────────────────────────── */
+[data-theme="dark"] .empty-state-icon {
+  opacity: 0.3;
+}
+
+/* ── Dark result detail items ────────────────────────────────── */
+[data-theme="dark"] .result-detail-item {
+  background: var(--clr-slate-50);
+}
+
+/* ── Dark card footer ────────────────────────────────────────── */
+[data-theme="dark"] .card-footer {
+  background: var(--clr-slate-50);
+  border-color: var(--border-default);
+}
+
+/* ── Dark select ─────────────────────────────────────────────── */
+[data-theme="dark"] select.form-input {
+  background: var(--bg-input);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] select.form-input option {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}

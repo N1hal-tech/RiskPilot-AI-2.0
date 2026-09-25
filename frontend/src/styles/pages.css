@@ -1,0 +1,141 @@
+/* ================================================================
+   Page-Specific Styles
+   ================================================================ */
+
+/* ── Dashboard Page ──────────────────────────────────────────── */
+.dashboard-hero {
+  background: linear-gradient(135deg, var(--clr-primary-600), var(--clr-primary-800));
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-8) var(--space-10);
+  margin-bottom: var(--space-8);
+  color: white; display: flex; align-items: center;
+  justify-content: space-between; position: relative; overflow: hidden;
+}
+
+.dashboard-hero::after {
+  content: ''; position: absolute; right: -60px; top: -60px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+
+.dashboard-hero::before {
+  content: ''; position: absolute; right: 60px; bottom: -40px;
+  width: 140px; height: 140px; border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+
+.dashboard-hero h1 {
+  font-size: var(--font-size-2xl); font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: var(--space-2);
+}
+
+.dashboard-hero p {
+  font-size: var(--font-size-base); opacity: 0.8;
+}
+
+.dashboard-hero-cta {
+  position: relative; z-index: 1;
+}
+
+.dashboard-hero-cta .btn {
+  background: white; color: var(--clr-primary-700);
+  font-weight: 700;
+}
+
+.dashboard-hero-cta .btn:hover {
+  background: var(--clr-slate-50);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ── Apply Page ──────────────────────────────────────────────── */
+.apply-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .apply-grid { grid-template-columns: 1fr; }
+}
+
+.apply-sidebar-card {
+  background: linear-gradient(160deg, var(--clr-slate-900), var(--clr-primary-900));
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-8);
+  color: white;
+}
+
+.apply-sidebar-card h3 {
+  font-size: var(--font-size-lg); font-weight: 700;
+  margin-bottom: var(--space-6);
+}
+
+.risk-legend-item {
+  display: flex; align-items: flex-start; gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.risk-legend-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.risk-legend-dot {
+  width: 12px; height: 12px; border-radius: 50;
+  min-width: 12px; margin-top: 4px; border-radius: 50%;
+}
+
+.risk-legend-dot.green  { background: var(--clr-success-500); }
+.risk-legend-dot.yellow { background: var(--clr-warning-500); }
+.risk-legend-dot.red    { background: var(--clr-danger-500); }
+
+.risk-legend-item h4 {
+  font-size: var(--font-size-sm); font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.risk-legend-item p {
+  font-size: var(--font-size-xs); color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* ── Result Modal ────────────────────────────────────────────── */
+.result-modal .modal-card {
+  max-width: 600px;
+}
+
+.result-details-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.result-detail-item {
+  background: var(--clr-slate-50);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-4); text-align: center;
+}
+
+.result-detail-item label {
+  display: block; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-muted);
+  font-weight: 700; margin-bottom: 2px;
+}
+
+.result-detail-item span {
+  font-size: var(--font-size-md); font-weight: 700;
+  font-family: var(--font-mono); color: var(--text-primary);
+}
+
+/* ── History Page ────────────────────────────────────────────── */
+.history-filters {
+  display: flex; align-items: center; gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.history-summary {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .history-summary { grid-template-columns: 1fr 1fr; }
+}

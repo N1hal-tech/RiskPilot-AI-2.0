@@ -1,0 +1,37 @@
+
+services:
+  # ── Python ML micro-service ─────────────────────────────────────
+  ml-service:
+    build: ./ml-service
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0) if urllib.request.urlopen('http://localhost:8000/health').status==200 else sys.exit(1)"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Java Spring Boot backend ────────────────────────────────────
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      ml-service: { condition: service_healthy }
+    environment:
+      RL_SERVICE_URL:  http://ml-service:8000
+      ML_SERVICE_URL:  http://ml-service:8000
+      MONGODB_URI:     ${MONGODB_URI}
+      GEMINI_API_KEY:  ${GEMINI_API_KEY}
+
+  # ── React frontend ─────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_GOOGLE_CLIENT_ID: ${REACT_APP_GOOGLE_CLIENT_ID:-582503181187-6raqn8j08avssuvm8otnr98s446568bg.apps.googleusercontent.com}
+        REACT_APP_API_BASE: ${REACT_APP_API_BASE:-http://localhost:8080/api}
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
