@@ -38,7 +38,7 @@ public class AnalyticsService {
 
         Double avgProb   = avgField("defaultProbability");
         Double avgRate   = avgFieldWithFilter("offeredInterestRate", Criteria.where("offeredInterestRate").gt(0));
-        Double totalAmt  = sumFieldWithFilter("loanAmount", Criteria.where("status").is("APPROVED"));
+        Double totalAmt  = sumFieldWithFilter("loanAmount", Criteria.where("status").is(LoanStatus.APPROVED.name()));
         Double avgReward = avgField("rewardReceived");
 
         double approvalRate  = total > 0 ? (double) approved / total * 100 : 0;

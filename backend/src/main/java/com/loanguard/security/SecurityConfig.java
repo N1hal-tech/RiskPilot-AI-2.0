@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,20 +19,28 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
+            .csrf(AbstractHttpConfigurer::disable)
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/api/public/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                // Allow admin endpoints to reach controller auth checks (custom token mechanism)
-                .requestMatchers("/api/admin/**").permitAll()
-                .requestMatchers("/api/chat/**").permitAll()
-                // Allow loan-related and profile endpoints to reach controller auth checks (custom token mechanism)
-                .requestMatchers("/api/loans/**", "/api/profile/**", "/api/notifications/**", "/api/risk/**").permitAll()
+                .requestMatchers(
+                    "/api/auth/**", "/api/public/**",
+                    "/swagger-ui/**", "/v3/api-docs/**"
+                ).permitAll()
+                // All remaining endpoints use the custom Bearer token mechanism
+                // enforced in each controller/service via AuthService.validateToken()
+                .requestMatchers(
+                    "/api/admin/**",
+                    "/api/chat/**",
+                    "/api/loans/**",
+                    "/api/profile/**",
+                    "/api/notifications/**",
+                    "/api/risk/**"
+                ).permitAll()
                 .anyRequest().authenticated()
             )
-            .httpBasic().disable()
-            .formLogin().disable();
+            .httpBasic(AbstractHttpConfigurer::disable)
+            .formLogin(AbstractHttpConfigurer::disable);
 
         return http.build();
     }

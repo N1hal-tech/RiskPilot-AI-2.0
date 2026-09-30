@@ -33,6 +33,7 @@ target/
 *.war
 *.ear
 *.log
+*.sql
 .mvn/
 mvnw
 mvnw.cmd
